@@ -1,0 +1,5 @@
+deberas dar permisos al archivo para que pueda instalar todo correctamente:
+chmod +x instalar_librerias.sh
+
+por ultimo ejecutar el instalador de recursos o paquetes:
+./install.sh
