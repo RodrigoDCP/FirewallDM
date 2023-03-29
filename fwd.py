@@ -35,19 +35,19 @@ def encender():
 	print(colored("Encendiendo Firewall...", 'yellow'))
 	time.sleep(1)
 	os.system('systemctl enable firewalld && systemctl start firewalld')
-	time.sleep(2)
+	time.sleep(1)
 	
 def apagar():
 	print(colored("Apagando Firewall...", 'yellow'))
 	time.sleep(1)
 	os.system('systemctl stop firewalld && systemctl disable firewalld')
-	time.sleep(2)
+	time.sleep(1)
 	
 # -------------------------------------------------------	
 
 def Reload():
 	print(colored("Cargando cambios...", 'yellow'))
-	time.sleep(2)
+	time.sleep(1)
 	os.system('firewall-cmd --reload')
 	time.sleep(1)
 	print(colored("Guardado", 'yellow'))
@@ -62,7 +62,7 @@ def addServ():
 	servicio = input(colored("servicio: ", 'green'))
 	os.system('clear')
 	print(colored("Agregando servicio:", 'yellow'), servicio)
-	time.sleep(2)
+	time.sleep(1)
 	os.system('firewall-cmd --zone=public --add-service='+servicio+' --permanent')
 	time.sleep(1)
 	os.system('firewall-cmd --reload')
@@ -78,7 +78,7 @@ def remove():
 	servicio = input(colored("Servicio: ", 'green'))
 	os.system('clear')
 	print(colored("Removiendo servicio....", 'yellow'))
-	time.sleep(2)
+	time.sleep(1)
 	os.system('firewall-cmd --zone=public --remove-service='+servicio+' --permanent')
 	time.sleep(1)
 	os.system('firewall-cmd --reload')
