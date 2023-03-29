@@ -21,30 +21,28 @@ print(colored('''
 |_|     \_/\_/ |____/      |_|  |_|
 ''', 'green'))
 print(colored("		By Cañas", 'yellow'))
-print(colored("			version - 1", 'yellow'))
+print(colored("			version - 1.2", 'yellow'))
 
 
 # [1] -----------------------------------------------
 
 def status():
-	print("Verificando estado del Firewall...")
+	print(colored("Verificando estado del Firewall...", 'yellow'))
 	time.sleep(1)
 	os.system('firewall-cmd --state')
 
 def encender():
-	print("Encendiendo Firewall...")
+	print(colored("Encendiendo Firewall...", 'yellow'))
 	time.sleep(1)
 	os.system('systemctl enable firewalld && systemctl start firewalld')
 	time.sleep(2)
-	os.system('clear')
-
 	
 def apagar():
-	print("Apagando Firewall...")
+	print(colored("Apagando Firewall...", 'yellow'))
 	time.sleep(1)
 	os.system('systemctl stop firewalld && systemctl disable firewalld')
 	time.sleep(2)
-	os.system('clear')
+	
 # -------------------------------------------------------	
 
 def Reload():
@@ -59,11 +57,11 @@ def Reload():
 # Agregar servicio ---------------------------------------
 
 def addServ():
-	print("Escriba el servicio que desea agregar.")
-	print(colored('''--------------------''', 'yellow'))
-	servicio = input("servicio: ")
+	print(colored("Escriba el servicio que desea agregar.", 'yellow'))
+	print(colored('''--------------------''', 'blue'))
+	servicio = input(colored("servicio: ", 'green'))
 	os.system('clear')
-	print("Agregando servicio", servicio)
+	print(colored("Agregando servicio:", 'yellow'), servicio)
 	time.sleep(2)
 	os.system('firewall-cmd --zone=public --add-service='+servicio+' --permanent')
 	time.sleep(1)
@@ -71,14 +69,15 @@ def addServ():
 	time.sleep(1)
 	print("El servicio", servicio, "fue agregado correctamente, verificar:")
 	time.sleep(1)
+	print(colored('''------------------------------------------''', 'yellow'))
 	os.system('firewall-cmd --list-all')
 
 def remove():
-	print("Escriba el servicio que desea retirar del Firewall.")
-	print(colored('''--------------------''', 'yellow'))
-	servicio = input("Servicio: ")
+	print(colored("Escriba el servicio que desea retirar del Firewall.", 'yellow'))
+	print(colored('''--------------------''', 'blue'))
+	servicio = input(colored("Servicio: ", 'green'))
 	os.system('clear')
-	print("Removiendo servicio....")
+	print(colored("Removiendo servicio....", 'yellow'))
 	time.sleep(2)
 	os.system('firewall-cmd --zone=public --remove-service='+servicio+' --permanent')
 	time.sleep(1)
@@ -86,40 +85,45 @@ def remove():
 	time.sleep(1)
 	print("El servicio", servicio, "ha sido removido con exito, verificar:")
 	time.sleep(1)
+	print(colored('''------------------------------------------''', 'yellow'))
 	os.system('firewall-cmd --list-all')
 	
 # Agregar los puertos -----------------------------------
 
 def addPuerto():
-	print("Escriba el Puerto que desea agregar.")
-	print("Ejemplo: 445/tcp o 445/udp")
+	print(colored("Escriba el Puerto que desea agregar.", 'yellow'))
+	print(colored("Ejemplo: 445/tcp o 445/udp", 'cyan'))
 	print(colored('''--------------------''', 'yellow'))
-	puerto = input("Puerto: ")
+	puerto = input(colored("Puerto: ", 'green'))
 	os.system('clear')
-	print("Agregando puerto....")
+	print(colored("Agregando puerto....", 'yellow'))
 	time.sleep(1)
 	os.system('firewall-cmd --zone=public --add-port='+puerto+' --permanent')
 	time.sleep(1)
 	os.system('firewall-cmd --reload')
 	time.sleep(1)
+	print(colored('''------------------------------------------''', 'yellow'))
 	print("El puerto", puerto, "ha sido agregado con exito, verificar:")
 	time.sleep(1)
+	print(colored('''------------------------------------------''', 'yellow'))
 	os.system('firewall-cmd --list-all')
 	
 def removePuerto():
 	print("Escriba el Puerto que desea remover.")
 	print("Ejemplo: 445/tcp o 445/udp")
 	print(colored('''--------------------''', 'yellow'))
-	puerto = input("Puerto: ")
+	puerto = input(colored("Puerto: ", 'green'))
 	os.system('clear')
-	print("Removiendo puerto....")
+	print(colored("Removiendo puerto....", 'yellow'))
 	time.sleep(1)
 	os.system('firewall-cmd --zone=public --remove-port='+puerto+' --permanent')
 	time.sleep(1)
 	os.system('firewall-cmd --reload')
 	time.sleep(1)
+	print(colored('''------------------------------------------''', 'yellow'))
 	print("El puerto", puerto, "ha sido removido con exito, verificar:")
 	time.sleep(1)
+	print(colored('''------------------------------------------''', 'yellow'))
 	os.system('firewall-cmd --list-all')
 	
 
@@ -129,15 +133,15 @@ def removePuerto():
 def Agregar_puertos():
 	while True:
 		print(colored('''------------------------------------------''', 'blue'))
-		print("Puertos")
+		print(colored("Puertos", 'yellow'))
 		print(colored('''------------------------------------------''', 'blue'))
-		print("[1] Agregar un puerto")
-		print("[2] Quitar un puerto")
+		print(colored("[1]", 'yellow'), "Agregar un puerto")
+		print(colored("[2]", 'yellow'), "Quitar un puerto")
 		print(colored('''--------------------''', 'yellow'))
-		print("[c] Limpiar consola")
-		print("[0] Regresar al menu")
+		print(colored("[c]", 'magenta'), "Limpiar consola")
+		print(colored("[0]", 'magenta'), "Regresar al menu")
 		print(colored('''------------------------------------------''', 'blue'))
-		opcion = input("Selecciona una opción: ")
+		opcion = input(colored("Selecciona una opción: ", 'green'))
 		os.system('clear')
 		
 		if opcion == "1":
@@ -158,15 +162,15 @@ def Agregar_puertos():
 def Agregar_servicio():
 	while True:
 		print(colored('''------------------------------------------''', 'blue'))
-		print("Servicios")
+		print(colored("Servicios", 'yellow'))
 		print(colored('''------------------------------------------''', 'blue'))
-		print("[1] Agregar un servicio")
-		print("[2] Quitar un servicio")
+		print(colored("[1]", 'yellow'), "Agregar un servicio")
+		print(colored("[2]", 'yellow'), "Quitar un servicio")
 		print(colored('''--------------------''', 'yellow'))
-		print("[c] Limpiar consola")
-		print("[0] Regresar al menu")
+		print(colored("[c]", 'magenta'), "Limpiar consola")
+		print(colored("[0]", 'magenta'), "Regresar al menu")
 		print(colored('''------------------------------------------''', 'blue'))
-		opcion = input("Selecciona una opción: ")
+		opcion = input(colored("Selecciona una opción: ", 'green'))
 		os.system('clear')
 		
 		if opcion == "1":
@@ -187,16 +191,16 @@ def Agregar_servicio():
 def Opciones_encendido():
 	while True:
 		print(colored('''------------------------------------------''', 'blue'))
-		print("Opciones de encendido")
+		print(colored("Opciones de encendido", 'yellow'))
 		print(colored('''------------------------------------------''', 'blue'))
-		print("[1] Status del Firewall")
-		print("[2] Encender Firewall")
-		print("[3] Apagar Firewall")
+		print(colored("[1]", 'yellow'), "Status del Firewall")
+		print(colored("[2]", 'yellow'), "Encender Firewall")
+		print(colored("[3]", 'yellow'), "Apagar Firewall")
 		print(colored('''--------------------''', 'yellow'))
-		print("[c] Limpiar consola")
-		print("[0] Regresar al menu")
+		print(colored("[c]", 'magenta'), "Limpiar consola")
+		print(colored("[0]", 'magenta'), "Regresar al menu")
 		print(colored('''------------------------------------------''', 'blue'))
-		opcion = input("Selecciona una opción: ")
+		opcion = input(colored("Selecciona una opción: ", 'green'))
 		os.system('clear')
 		
 		if opcion == "1":
@@ -222,15 +226,15 @@ def Opciones_encendido():
 def menu():
 	while True:
 		print(colored('''------------------------------------------''', 'blue'))
-		print("[1] Opciones de encendido")
-		print("[2] Agregar servicios")
-		print("[3] Agregar puertos")
-		print("[4] Cargar modificaciones")
+		print(colored("[1]", 'yellow'), "Opciones de encendido")
+		print(colored("[2]", 'yellow'), "Agregar servicios")
+		print(colored("[3]", 'yellow'), "Agregar puertos")
+		print(colored("[4]", 'yellow'), "Cargar modificaciones")
 		print(colored('''--------------------''', 'yellow'))
-		print("[c] Limpiar consola")
-		print("[0] Salir")
+		print(colored("[c]", 'magenta'), "Limpiar consola")
+		print(colored("[0]", 'magenta'), "Salir")
 		print(colored('''------------------------------------------''', 'blue'))
-		opcion = input("Selecciona una opción: ")
+		opcion = input(colored("Selecciona una opción: ", 'green'))
 		os.system('clear')
 		
 		if opcion == "1":
