@@ -125,7 +125,21 @@ def removePuerto():
 	time.sleep(1)
 	print(colored('''------------------------------------------''', 'yellow'))
 	os.system('firewall-cmd --list-all')
-	
+
+# Lista -------------------------------------------------
+
+def lista():
+	while True:
+		print(colored("Enlistando servicios...", 'yellow'))
+		time.sleep(1)
+		print(colored('''------------------------------------------''', 'blue'))
+		os.system('firewall-cmd --list-all')
+		print(colored('''------------------------------------------''', 'blue'))
+		print("Pulsa Enter/cualquiera para regresar")
+		opcion = input("")
+		os.system('clear')
+		menu()
+
 
 # MENUS --------------------------------------------------
 
@@ -137,6 +151,7 @@ def Agregar_puertos():
 		print(colored('''------------------------------------------''', 'blue'))
 		print(colored("[1]", 'yellow'), "Agregar un puerto")
 		print(colored("[2]", 'yellow'), "Quitar un puerto")
+		print(colored("[3]", 'yellow'), "Lista")
 		print(colored('''--------------------''', 'yellow'))
 		print(colored("[c]", 'magenta'), "Limpiar consola")
 		print(colored("[0]", 'magenta'), "Regresar al menu")
@@ -148,6 +163,8 @@ def Agregar_puertos():
 			addPuerto()
 		elif opcion == "2":
 			removePuerto()
+		elif opcion == "3":
+			lista()
 		elif opcion == "c":
 			os.system('clear')
 		elif opcion == "0":
@@ -166,6 +183,7 @@ def Agregar_servicio():
 		print(colored('''------------------------------------------''', 'blue'))
 		print(colored("[1]", 'yellow'), "Agregar un servicio")
 		print(colored("[2]", 'yellow'), "Quitar un servicio")
+		print(colored("[3]", 'yellow'), "Lista")
 		print(colored('''--------------------''', 'yellow'))
 		print(colored("[c]", 'magenta'), "Limpiar consola")
 		print(colored("[0]", 'magenta'), "Regresar al menu")
@@ -177,6 +195,8 @@ def Agregar_servicio():
 			addServ()
 		elif opcion == "2":
 			remove()
+		elif opcion == "3":
+			lista()
 		elif opcion == "c":
 			os.system('clear')
 		elif opcion == "0":
@@ -230,6 +250,7 @@ def menu():
 		print(colored("[2]", 'yellow'), "Agregar servicios")
 		print(colored("[3]", 'yellow'), "Agregar puertos")
 		print(colored("[4]", 'yellow'), "Cargar modificaciones")
+		print(colored("[5]", 'yellow'), "Lista")
 		print(colored('''--------------------''', 'yellow'))
 		print(colored("[c]", 'magenta'), "Limpiar consola")
 		print(colored("[0]", 'magenta'), "Salir")
@@ -245,6 +266,8 @@ def menu():
 			Agregar_puertos()
 		elif opcion == "4":
 			Reload()
+		elif opcion == "5":
+			lista()
 		elif opcion == "c":
 			os.system('clear')
 		elif opcion == "0":
